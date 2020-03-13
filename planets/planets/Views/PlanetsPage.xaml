@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="planets.Views.PlanetsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
+
+    <StackLayout Margin="10">
+        <RefreshView
+            Command="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsRefreshing}"
+            RefreshColor="Blue">
+            <CollectionView x:Name="planetsCollectionView" ItemsSource="{Binding Planets}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.RowSpan="2"
+                                Aspect="AspectFill"
+                                HeightRequest="60"
+                                Source="{Binding Pic}"
+                                WidthRequest="60" />
+                            <Label
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                Text="{Binding Name}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+
+</ContentPage>
